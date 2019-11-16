@@ -33,3 +33,25 @@ paths:
 permissions:
     file: 777
     dir: 777
+
+convert:
+    never_convert_lossy_files: yes
+    copy_album_art: yes
+    dest: /home/jlivin25/Music/Library/flacimports/
+    auto: yes
+    pretend: no
+    embed: yes
+    threads: 8
+    album_art_maxwidth: 0
+    quiet: no
+
+    format: flac
+    formats:
+        flac:
+            extension: flac
+            command: ffmpeg -i $source -y -vn -acodec flac $dest
+        alac:
+            extension: m4a
+            command: ffmpeg -i $source -y -vn -acodec alac $dest
+    max_bitrate: 500
+    tmpdir:
